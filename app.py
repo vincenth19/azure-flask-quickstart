@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-   id_token = request.headers.get('X-MS-TOKEN-AAD-ID-TOKEN')
+   id_token = request.headers.get('X-MS-CLIENT-PRINCIPAL-NAME')
    print('Request for index page received', id_token)
    return render_template('index.html', id_token=id_token if id_token else 'none')
 
