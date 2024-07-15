@@ -8,8 +8,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-   print('Request for index page received')
-   return render_template('index.html')
+   id_token = request.headers.get('X-MS-TOKEN-AAD-ID-TOKEN')
+   print('Request for index page received', id_token)
+   return render_template('index.html', id_token=id_token if id_token else 'none')
 
 @app.route('/favicon.ico')
 def favicon():
